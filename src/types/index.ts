@@ -6,6 +6,7 @@ export interface Product {
   category: string;
   categorySlug: string;
   image: string;
+  modelUrl?: string;
   features?: string[];
 }
 

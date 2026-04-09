@@ -10,6 +10,7 @@ export const products: Product[] = [
     category: "Gıda Ürünleri",
     categorySlug: "gida-urunleri",
     image: "/images/products/100cc-hdpe-a.jpg",
+    modelUrl: "/models/100-cc-hdpe-ambalaj.glb",
     features: ["HDPE hammadde", "100 cc hacim", "IML/BML baskı seçeneği", "Folyolu/kilitli kapak"],
   },
   {

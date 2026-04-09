@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import Button from "@/components/ui/Button";
 import ProductCard from "@/components/ui/ProductCard";
+import ProductViewer3D from "@/components/ui/ProductViewer3D";
 import { products, getProductBySlug, getProductsByCategory } from "@/data/products";
 import { SITE_URL } from "@/lib/utils";
 
@@ -83,16 +84,24 @@ export default async function ProductDetailPage({ params }: PageProps) {
       <section className="py-12 lg:py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            <div className="relative aspect-square bg-gray-100 rounded-2xl overflow-hidden">
-              <Image
-                src={product.image}
-                alt={product.name}
-                fill
-                className="object-cover"
-                priority
-                sizes="(max-width: 1024px) 100vw, 50vw"
+            {product.modelUrl ? (
+              <ProductViewer3D
+                modelUrl={product.modelUrl}
+                imageUrl={product.image}
+                productName={product.name}
               />
-            </div>
+            ) : (
+              <div className="relative aspect-square bg-gray-100 rounded-2xl overflow-hidden">
+                <Image
+                  src={product.image}
+                  alt={product.name}
+                  fill
+                  className="object-cover"
+                  priority
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+              </div>
+            )}
             <div>
               <span className="inline-block bg-primary/10 text-primary text-sm font-medium px-3 py-1 rounded-full mb-4">
                 {product.category}
