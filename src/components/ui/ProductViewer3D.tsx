@@ -14,6 +14,9 @@ function Model({ url, onLoaded }: { url: string; onLoaded: () => void }) {
   useEffect(() => {
     if (fitted.current) return;
 
+    scene.scale.setScalar(1);
+    scene.position.set(0, 0, 0);
+
     const box = new THREE.Box3().setFromObject(scene);
     if (box.isEmpty()) return;
 
